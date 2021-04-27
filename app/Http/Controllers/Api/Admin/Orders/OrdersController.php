@@ -31,7 +31,7 @@ class OrdersController extends Controller
         ])->first();
 
         if (!$order) {
-            return $this->failed(['code' => 'E10', 'message' => 'Invalid Order Reference'], 400);
+            return $this->failed(['code' => 'E10', 'message' => 'Invalid Order ID'], 400);
         }
 
         $order->update(['photographer_id' => request('photographer_id')]);
