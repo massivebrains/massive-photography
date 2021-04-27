@@ -35,3 +35,10 @@ Route::group(['namespace' => 'User', 'prefix' => 'user', 'middleware' => ['auth:
         Route::get('/orders', 'OrdersController@index');
     });
 });
+
+Route::group(['namespace' => 'Photographer', 'prefix' => 'photographer', 'middleware' => ['auth:api', 'photographer']], function () {
+    Route::group(['namespace' => 'Orders'], function () {
+        Route::get('/orders', 'OrdersController@index');
+        Route::post('/order/upload', 'UploadController@index');
+    });
+});

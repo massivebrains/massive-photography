@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Str;
 
 function _d($dateString = '', $time = true)
 {
@@ -53,32 +54,6 @@ function _email($to = '', $subject = '', $body = '')
 function _to_phone($string = '')
 {
     return '234' . substr($string, -10);
-}
-
-
-function _cloudinary($file = '', $folder = 'massive-photography', $is_base_64 = false)
-{
-    try {
-        $public_id = str_random(10);
-
-        if ($is_base_64 == true) {
-            $response = \Cloudinary\Uploader::upload("data:image/png;base64,$file", [
-
-                'public_id' => $public_id,
-                'folder' => $folder,
-            ]);
-        } else {
-            $response = \Cloudinary\Uploader::upload($file, [
-
-                'public_id' => $public_id,
-                'folder' => $folder,
-            ]);
-        }
-
-        return (object) ['status' => true, 'link' => $response['secure_url']];
-    } catch (Exception $e) {
-        return (object) ['status' => false, 'link' => null, 'error' => $e->getMessage()];
-    }
 }
 
 function _log($log = '', \App\Models\User $performedOn = null)
