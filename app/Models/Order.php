@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Jobs\Api\NotifyUserOfAwaitingApprovalJob;
 
 class Order extends Model
 {
@@ -31,5 +32,17 @@ class Order extends Model
     public function order_details()
     {
         return $this->hasMany('App\Models\OrderDetail');
+    }
+
+    public function checkAllDetailsForAwaitingApproval()
+    {
+        $not_awaiting_approval = $this->order_details()->where('status', '!=', 'awaiting_approval')->count();
+
+        if ($not_awaiting_approval > 0) {
+            return;
+        }
+
+        $this->update(['status' => 'awaiting_approval']);
+        NotifyUserOfAwaitingApprovalJob::dispatch($this);
     }
 }
