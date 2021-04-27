@@ -15,6 +15,5 @@ use Illuminate\Support\Facades\Artisan;
 */
 
 Route::get('/', function () {
-    Artisan::call('db:migrate');
-    return view('welcome');
+    return redirect('https://documenter.getpostman.com/view/1050902/TzK15ukC');
 });
