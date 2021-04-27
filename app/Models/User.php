@@ -18,9 +18,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'type',
         'otp',
-        'email_verified_at'
+        'email_verified_at',
+        'api_token'
     ];
 
     protected $guarded = ['updated_at'];

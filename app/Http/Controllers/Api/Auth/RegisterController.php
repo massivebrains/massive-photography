@@ -24,7 +24,7 @@ class RegisterController extends Controller
             'phone' => _to_phone(request('phone')),
             'password' => bcrypt(request('password')),
             'address' => request('address'),
-            'type' => 'business',
+            'type' => request('type'),
             'otp' => md5($otp),
             'status' => 'inactive'
         ]);
@@ -42,7 +42,6 @@ class RegisterController extends Controller
         
         $user = User::where([
             'otp' => md5($otp),
-            'type' => 'business',
             'status' => 'inactive'
         ])->first();
 

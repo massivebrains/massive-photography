@@ -20,7 +20,7 @@ function _t($dateString = '')
 
 function _reference()
 {
-    $reference = 'TR' . time() * rand(0, 99);
+    $reference = 'O-' . time() * rand(0, 99);
 
     if (strlen($reference) < 8) {
         return _reference();

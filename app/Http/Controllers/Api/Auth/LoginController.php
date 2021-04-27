@@ -52,8 +52,10 @@ class LoginController extends Controller
 
                 return $this->failed(['code' => 'E02', 'message' => $error], 422);
             }
-
-            return $this->success(Auth::user());
+            return $this->success([
+                'api_token' => $user->api_token,
+                'user' => $user
+            ]);
         }
 
         return $this->failed(['code' => 'E01', 'message' => 'Invalid Email or Password'], 400);
