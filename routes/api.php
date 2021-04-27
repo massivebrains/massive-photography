@@ -33,6 +33,7 @@ Route::group(['namespace' => 'User', 'prefix' => 'user', 'middleware' => ['auth:
     Route::group(['namespace' => 'Orders'], function () {
         Route::post('/order/create', 'PlaceOrderController@index');
         Route::get('/orders', 'OrdersController@index');
+        Route::put('/order/{id}/{action}', 'OrdersController@status');
     });
 });
 

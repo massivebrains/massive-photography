@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->integer('photographer_id')->references('id')->on('users')->nullable();
             $table->string('reference')->nullable();
             $table->string('instruction')->nullable();
-            $table->enum('status', ['pending', 'awaiting_approval', 'partially_declined', 'partially_approved', 'declined', 'approved'])->default('pending');
+            $table->enum('status', ['pending', 'awaiting_approval', 'declined', 'approved'])->default('pending');
             $table->timestamps();
         });
     }
