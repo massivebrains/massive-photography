@@ -2,8 +2,6 @@
 
 $heroku_db_url = parse_url(env('CLEARDB_DATABASE_URL', 'mysql://b915d59f5fe67a:1874068d@us-cdbr-east-03.cleardb.com/heroku_6b67fc02b8da4c7?reconnect=true'));
 
-dd($heroku_db_url);
-
 use Illuminate\Support\Str;
 
 return [
