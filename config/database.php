@@ -1,5 +1,7 @@
 <?php
 
+$heroku_db_url = parse_url(env('CLEARDB_DATABASE_URL', 'mysql://b915d59f5fe67a:1874068d@us-cdbr-east-03.cleardb.com/heroku_6b67fc02b8da4c7?reconnect=true'));
+
 use Illuminate\Support\Str;
 
 return [
@@ -89,6 +91,17 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
+        ],
+
+        'mysql-heroku' => [
+            'driver'   => 'mysql',
+            'host'     => $heroku_db_url['host'],
+            'database' => substr($heroku_db_url['path'], 1),
+            'username' => $heroku_db_url['user'],
+            'password' => $heroku_db_url['pass'],
+            'charset'  => 'utf8',
+            'prefix'   => '',
+            'schema'   => 'public',
         ],
 
     ],
