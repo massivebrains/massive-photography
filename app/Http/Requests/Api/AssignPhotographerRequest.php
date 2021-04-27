@@ -4,7 +4,7 @@ namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterRequest extends FormRequest
+class AssignPhotographerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,8 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'phone' => 'required|digits:11',
-            'address' => '',
-            'type' => 'required|in:user,photographer',
-            'password' => 'required|min:6|confirmed'
+            'reference' => 'required|exists:orders,reference',
+            'photographer_id' => 'required|exists:users,id'
         ];
     }
 }

@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->enum('type', ['business', 'photographer', 'admin'])->default('business')->nullable();
+            $table->enum('type', ['user', 'photographer', 'admin'])->default('user')->nullable();
             $table->string('address')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('inactive');
             $table->string('api_token')->nullable();
