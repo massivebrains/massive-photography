@@ -24,7 +24,7 @@ class OrderFilterRequest extends FormRequest
     public function rules()
     {
         return [
-            'status' => 'in:pending,awaiting_approval,partially_declined,partially_approved,declined,approved'
+            'status' => 'in:pending,awaiting_approval,declined,approved'
         ];
     }
 }

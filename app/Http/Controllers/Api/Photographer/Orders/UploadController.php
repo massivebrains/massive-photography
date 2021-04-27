@@ -16,8 +16,8 @@ class UploadController extends Controller
         $order_detail = OrderDetail::where([
             'id' => request('order_detail_id'),
             'order_id' => request('order_id'),
-            'status' => 'pending'
         ])
+        ->whereIn('status', ['pending', 'declined'])
         ->whereHas('order', function ($query) {
             $query->where(['photographer_id' => Auth::user()->id]);
         })

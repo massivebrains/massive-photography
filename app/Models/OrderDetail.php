@@ -11,11 +11,13 @@ class OrderDetail extends Model
 
     public $guarded = ['updated_at'];
     
-    public function getImageUrlAttribute()
+    public function getImageUrlAttribute($value)
     {
         if ($this->status != 'approved') {
             return null;
         }
+
+        return $value;
     }
 
     public function order()
