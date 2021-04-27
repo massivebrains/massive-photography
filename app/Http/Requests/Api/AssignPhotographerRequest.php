@@ -24,7 +24,7 @@ class AssignPhotographerRequest extends FormRequest
     public function rules()
     {
         return [
-            'reference' => 'required|exists:orders,reference',
+            'order_id' => 'required|exists:orders,id',
             'photographer_id' => 'required|exists:users,id'
         ];
     }

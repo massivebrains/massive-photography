@@ -26,7 +26,7 @@ class OrdersController extends Controller
     public function assignPhotographer(AssignPhotographerRequest $request)
     {
         $order = Order::where([
-            'reference' => request('reference'),
+            'id' => request('order_id'),
             'status' => 'pending'
         ])->first();
 
